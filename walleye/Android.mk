@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),taimen)
+ifeq ($(TARGET_DEVICE),walleye)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := datastatusnotification
