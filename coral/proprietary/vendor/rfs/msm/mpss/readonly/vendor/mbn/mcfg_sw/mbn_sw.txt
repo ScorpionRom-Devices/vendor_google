@@ -41,6 +41,7 @@ mcfg_sw/generic/Pixel/NA/CBRS/pixel_CBRS/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/NA/CBRS_Chatr/pixel_CBRS_Chatr/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/NA/CSpire/VoLTE/pixel_CSpire/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/NA/Cellcom/pixel_Cellcom/mcfg_sw.mbn
+mcfg_sw/generic/Pixel/NA/Cellcom_Core/pixel_Cellcom_Core/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/NA/Cricket/pixel_Cricket/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/NA/Freedom/pixel_VoLTE/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/NA/Inland/pixel_Commercial/mcfg_sw.mbn
@@ -70,5 +71,6 @@ mcfg_sw/generic/Pixel/SEA/Singtel/Commercial/pixel_Singapore/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/SEA/StarHub/Commercial/pixel_SG/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/SEA/TM/pixel_Commercial/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/TestSIM/pixel_TestSIM/mcfg_sw.mbn
+mcfg_sw/generic/Pixel/common/Ubigi/pixel_Ubigi/mcfg_sw.mbn
 mcfg_sw/generic/Pixel/common/WildCard/pixel_WildCard/mcfg_sw.mbn
 mcfg_sw/generic/common/Default/sm8150.genp.prod/Default/mcfg_sw.mbn
