@@ -104,7 +104,11 @@ KNOWN_OLD_SHA=(
     f4f465056    # 2020-12-04 (MP-RVC-13)
     61fd4bbbc    # 2021-01-06 (MP-RVC-14)
     f93f993f0    # 2021-02-14 (MP-RVC-15)
-    #b3875afe2    # 2021-05-13 (MP-RVC-16)
+    1adc8aa      # 2021-03-29 (MP-SC-01)
+    b3875afe2    # 2021-05-13 (MP-RVC-16)
+    e5dad00      # 2021-06-04 (MP-SC-02)
+    c39afeb      # 2021-06-30 (MP-SC-03)
+    #df87227      # 2021-07-21 (MP-SC-04)
 
     # NOTE: Update citadel_embedding_versions.h when updating this section.
 )
