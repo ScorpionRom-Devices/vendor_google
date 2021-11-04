@@ -1,4 +1,4 @@
-VERSION:839188873
+VERSION:839254451
 
 1,IIIIIII,COEX_MWS_ANT_DIVERSITY: Chainmask Req Fail(%d):Rx:0x%x, Tx:0x%x, RxNSS:0x%x, SMPS_Diff:%d, ReqId:%d, Cal:%d 
 2,IIII,COEX_MWS_ANT_DIVERSITY: chnmsk completed Rx:0x%x, Tx:0x%x, Cal:%d, ReqId:%d 
@@ -2078,7 +2078,7 @@ VERSION:839188873
  
 2033,I,NEW WFA NAN TCP: Received Testmode command:%d 
 2034,I,Testmode NAN Availability Attribute(NA)(len:%d) 
-2035,II,NA[%d]:0x%x 
+2035,I,Testmode NAN Availability invalid length %d 
 2036,I,ERROR: Testmode NAN Availability Attribute Invalid offset:%d 
 2037,IIII,Testmode NAN Availability Blob Entry_list_count:%d chan_band_cnt:%d chan_band_type:%d num_band_entries:%d) 
 2038,I,Testmode NAN Availability Attribute BandId:%d 
@@ -2089,7 +2089,7 @@ VERSION:839188873
 2043,I,Testmode disable_ipv6_link_local :%x 
 2044,I,TRANSPORT IP pParam : %d 
 2045,III,flag:%d port : %d protocol : %d 
-2046,II,NA[%d]:0x%x 
+2046,I,Testmode NAN Availability invalid length %d 
 2047,I,ERROR: Testmode NAN Availability Attribute Invalid offset:%d 
 2048,II,Testmode NAN Availability Attribute(NA)(len:%d) type %d 
 2049,IIII,Testmode NAN Availability Blob Entry_list_count:%d chan_band_cnt:%d chan_band_type:%d num_band_entries:%d) 
@@ -5772,7 +5772,7 @@ VERSION:839188873
  rr_empty_cnt:%d 
 5389,III,rx_ring_process_delayed_ring_setup: ring_indx(%d), pdev_id(%d), ring_flags(0x%x)
  
-5390,I,rx_offload_fwd_check, corrupted amsdu count: %d 
+5390,III,rx_offload_fwd_check : is_amsdu_corrupted %d  mcast_bcast_frm %d  is_four_address_frame %d 
 5391,IIIIII,WAL_DBGID_RX_ARP_FRAME pdev_id:0x%x vdev_id:0x%x src_mac_address_0_31:0x%x src_mac_address_47_32:0x%x dst_mac_address_0_32:0x%x dst_mac_address_47_32:0x%x 
 5392,IIIIII,WAL_DBGID_RX_EAPOL_FRAME pdev_id:0x%x vdev_id:0x%x src_mac_address_0_31:0x%x src_mac_address_47_32:0x%x dst_mac_address_0_32:0x%x dst_mac_address_47_32:0x%x 
 5393,II,WAL_RX_OFFLOAD: Received an unclassified %s packet, route(%d) 
@@ -10075,158 +10075,511 @@ dpdRxiq_rdbk_txgain_index: Tx gain idx rdbk from HW GLUT = %d
 8850,II,[VDEV_ID]:%d [USER_START_RATE]:%d 
 8851,I,AUTORATE_RESET_ERR: BSS Peer has invalid phymode %d Exiting AutoRate Reset attempt 
 8852,IIIII,AUTORATE_RESET_USER_START_RATE: peer phymode %d ni_flags 0x%x ht %d vht %d user_start_rate %d 
-8853,I,_htt_tgt_stats_reset: g_rst_stats_types_mask : 0x%x  
-8854,I,htt_tgt_stats_reset: calling fucntion : 0x%x  
-8855,II,htt_tgt_stats_upload: upl_stats_types_mask : 0x%x rst_stats_types_mask 0x%x 
-8856,,wdiag_cmd_get_tx_rx_stats_handle: request pointer is NULL  
-8857,II,wdiag_cmd_get_tx_rx_stats_handle: pkt_len is not %d, pkt_len = %d  
-8858,I,wdiag_cmd_get_tx_rx_stats_handle: Invalid stats type :%d  
-8859,IIII,ar_wal_rtt_ack_rx_time(): mcs: %d preamble: %d bw: %d ack_time: %d 
-8860,II,rtt_get_tx_rate: rate: %d bit_rate_kbps: %d 
-8861,I,TX filtered TLV:%d 
-8862,I,rx_location_info_status: :%d 
-8863,I,rtt_get_rx_frame_len:  reported_mpdu_length = %d 
-8864,I,rtt_send_sta_get_rxpreamble: rtt_preamble_type=0x%x 
-8865,I,_wal_fac_handler: report type %d  
-8866,IIIIIII,timing_backoff_rssi(L: %d M: %d h: %d) timing_backoff_sel: %d timing_backoff_err: %d fac_bo_err_adj: %d str_rx_chain: %d 
-8867,II,recv sta rssi 0x%x chain:%d 
-8868,II,send sta rssi 0x%x chain:%d 
-8869,IIIII,rtt_get_toda: toda_type=0x%x  toda_upper = 0x%x, toda_lower = 0x%x toda_80Mhz = %lu toda = %lu 
-8870,I,rtt_get_toda:: unknown toda_type: %d 
-8871,II,rtt_get_toda after ps: toda_upper = 0x%x, toda_lower = 0x%x 
-8872,III,rtt_get_toda txrx_delay=%d toda_ajusted upper: 0x%x lower: 0x%x 
-8873,,CFR status is NULL return 
-8874,IIIII,collecting CFR dump from chain:%d ext:%d aln_sz:%d, sz:%d cfr_status:%d 
-8875,IIIIIIII,tone %d,%d,%d,%d,%d,%d,%d,%d 
-8876,II,finished CFR dump from chain:%d ext:%d 
-8877,II,rtt_recv_sta_get_rxbw: rx_bw=%d rx_preamble=%d 
-8878,I,rtt_send_sta_get_txbw: packet_bw=0x%x 
-8879,I,rtt_send_sta_get_rxbw: rtt_pkt_bw=0x%x 
-8880,II,Deliver RX Ind msg s_thr:%d to RT at ticks:0x%x 
-8881,,Thread msg buff alloc failed: Failed to report RTT T3 
-8882,,Failed to get rtt_mt_msg_tx 
-8883,IIII,Current chain mask: Tx: 0x%x Rx: 0x%x dyn_bw: %d rx_preamble: %d 
-8884,,fac_invalid 
-8885,IIIIIIII,RXLocInf1 %d,%d,%d,%d,%d,%d,%d,%d 
-8886,IIIIIIII,RXLocInf2 %d,%d,%d,%d,%d,%d,%d,%d 
-8887,IIIIIIII,RXLocInf3 %d,%d,%d,%d,%d,%d,%d,%d 
-8888,I,rtt_fac_handler:  fac_value_in_ts=%d 
-8889,I,rtt_fac_handler:  fac_value_converted=%d 
-8890,,rtt_get_fac_results: fac_invalid! Returning! 
-8891,III,rtt_get_fac_results: fac_leg_status=0x%x fac_vht_status=0x%x fac=%d 
-8892,I,_wal_log_CIR: p_CIR_buf %p 
-8893,II,read_CIR: CIR status %d CIR buff %p  
-8894,IIII,read_CIR: num_samples %d bw %d size %d is_ext %d 
-8895,IIIIIIII,index %d,%d,%d,%d,%d,%d,%d,%d 
-8896,IIIIIII,calc_tx_frame_time(): tx preamble: %d bw: %d rate_code: %d tx_preamble_duration: %d f_len: %d txrate: %d f_time: %d 
-8897,IIIIIIIII,tm_rx_frame_time(): f_len: %d del: %d rate: %d f_time: %d preamble type: %d mcs: %d bw: %d nss: %d sgi: %d 
-8898,IIIIII,rtt_get_delay_tbl_indx_packetype() status: %d bw: %d, preamble: %d, delay_tdbl_indx: %d, pkttype: %d ack_dyn_bw: %d 
-8899,IIIIII,COEX_MWS_PA_MUTE: TxG: W(%u),EV1(0x%x),EV2(0x%x),OEV(0x%x)=0x%x, Read=0x%x 
-8900,IIII,COEX_MWS_PA_MUTE: [Err] : TestBus:MacDis(0x%x,0x%x),TestBus:0x%x,Type-0:0x%x  
-8901,,COEX_MWS_PA_MUTE: [Info]:Tx_Grant_Config called when CSS is Down 
-8902,,COEX_MWS_PA_MUTE: [Info]:MUTE both MACs : Event : PERMANENT_MUTE_ON_WLAN_CRASH 
-8903,,COEX_MWS_PA_MUTE: [Info]:MUTE both MACs because WLAN state is CRASH 
-8904,,enable_gipo_profiling:BT is ON, Turnoff BT to have this feature
+8853,,wlif_init gets called 
+8855,II,WLIF_RX_NOTIFY_CB:%x, WLIF_TX_DONE_CB:%x 
+8857,,wlif_init is done! 
+8859,,wlif_register_callback gets called 
+8861,II,WLIF_RX_NOTIFY_CB:%x, WLIF_TX_DONE_CB:%x 
+8863,,wlif_register_callback is done! 
+8865,III,Requested TX %x with len-%d, %x 
+8867,I,TX: WLAN -> WLS, calling WLS RX callback with %x 
+8869,,Cannot find WLAN thread 
+8871,I,TX: WLS -> WLAN, signal to WLAN thread with %x 
+8873,,TX WLS -> WLAN: calling WLAN RX callback 
+8875,,WLS RX done. calling WLAN TX done callback 
+8877,I,%d: WLIF error! 
+8879,I,wlif_rx_done pBuf:%x 
+8881,,WLAN RX done. Calling WLS TX done callback 
+8883,,WLS RX done. siganlling it to WLAN thread 
+8885,I,_htt_tgt_stats_reset: g_rst_stats_types_mask : 0x%x  
+8886,I,htt_tgt_stats_reset: calling fucntion : 0x%x  
+8887,II,htt_tgt_stats_upload: upl_stats_types_mask : 0x%x rst_stats_types_mask 0x%x 
+8888,,wdiag_cmd_get_tx_rx_stats_handle: request pointer is NULL  
+8889,II,wdiag_cmd_get_tx_rx_stats_handle: pkt_len is not %d, pkt_len = %d  
+8890,I,wdiag_cmd_get_tx_rx_stats_handle: Invalid stats type :%d  
+8891,IIII,ar_wal_rtt_ack_rx_time(): mcs: %d preamble: %d bw: %d ack_time: %d 
+8892,II,rtt_get_tx_rate: rate: %d bit_rate_kbps: %d 
+8893,I,TX filtered TLV:%d 
+8894,I,rx_location_info_status: :%d 
+8895,I,rtt_get_rx_frame_len:  reported_mpdu_length = %d 
+8896,I,rtt_send_sta_get_rxpreamble: rtt_preamble_type=0x%x 
+8897,I,_wal_fac_handler: report type %d  
+8898,IIIIIII,timing_backoff_rssi(L: %d M: %d h: %d) timing_backoff_sel: %d timing_backoff_err: %d fac_bo_err_adj: %d str_rx_chain: %d 
+8899,II,recv sta rssi 0x%x chain:%d 
+8900,II,send sta rssi 0x%x chain:%d 
+8901,IIIII,rtt_get_toda: toda_type=0x%x  toda_upper = 0x%x, toda_lower = 0x%x toda_80Mhz = %lu toda = %lu 
+8902,I,rtt_get_toda:: unknown toda_type: %d 
+8903,II,rtt_get_toda after ps: toda_upper = 0x%x, toda_lower = 0x%x 
+8904,III,rtt_get_toda txrx_delay=%d toda_ajusted upper: 0x%x lower: 0x%x 
+8905,,CFR status is NULL return 
+8906,IIIII,collecting CFR dump from chain:%d ext:%d aln_sz:%d, sz:%d cfr_status:%d 
+8907,IIIIIIII,tone %d,%d,%d,%d,%d,%d,%d,%d 
+8908,II,finished CFR dump from chain:%d ext:%d 
+8909,II,rtt_recv_sta_get_rxbw: rx_bw=%d rx_preamble=%d 
+8910,I,rtt_send_sta_get_txbw: packet_bw=0x%x 
+8911,I,rtt_send_sta_get_rxbw: rtt_pkt_bw=0x%x 
+8912,II,Deliver RX Ind msg s_thr:%d to RT at ticks:0x%x 
+8913,,Thread msg buff alloc failed: Failed to report RTT T3 
+8914,,Failed to get rtt_mt_msg_tx 
+8915,IIII,Current chain mask: Tx: 0x%x Rx: 0x%x dyn_bw: %d rx_preamble: %d 
+8916,,fac_invalid 
+8917,IIIIIIII,RXLocInf1 %d,%d,%d,%d,%d,%d,%d,%d 
+8918,IIIIIIII,RXLocInf2 %d,%d,%d,%d,%d,%d,%d,%d 
+8919,IIIIIIII,RXLocInf3 %d,%d,%d,%d,%d,%d,%d,%d 
+8920,I,rtt_fac_handler:  fac_value_in_ts=%d 
+8921,I,rtt_fac_handler:  fac_value_converted=%d 
+8922,,rtt_get_fac_results: fac_invalid! Returning! 
+8923,III,rtt_get_fac_results: fac_leg_status=0x%x fac_vht_status=0x%x fac=%d 
+8924,I,_wal_log_CIR: p_CIR_buf %p 
+8925,II,read_CIR: CIR status %d CIR buff %p  
+8926,IIII,read_CIR: num_samples %d bw %d size %d is_ext %d 
+8927,IIIIIIII,index %d,%d,%d,%d,%d,%d,%d,%d 
+8928,IIIIIII,calc_tx_frame_time(): tx preamble: %d bw: %d rate_code: %d tx_preamble_duration: %d f_len: %d txrate: %d f_time: %d 
+8929,IIIIIIIII,tm_rx_frame_time(): f_len: %d del: %d rate: %d f_time: %d preamble type: %d mcs: %d bw: %d nss: %d sgi: %d 
+8930,IIIIII,rtt_get_delay_tbl_indx_packetype() status: %d bw: %d, preamble: %d, delay_tdbl_indx: %d, pkttype: %d ack_dyn_bw: %d 
+8931,IIIIII,COEX_MWS_PA_MUTE: TxG: W(%u),EV1(0x%x),EV2(0x%x),OEV(0x%x)=0x%x, Read=0x%x 
+8932,IIII,COEX_MWS_PA_MUTE: [Err] : TestBus:MacDis(0x%x,0x%x),TestBus:0x%x,Type-0:0x%x  
+8933,,COEX_MWS_PA_MUTE: [Info]:Tx_Grant_Config called when CSS is Down 
+8934,,COEX_MWS_PA_MUTE: [Info]:MUTE both MACs : Event : PERMANENT_MUTE_ON_WLAN_CRASH 
+8935,,COEX_MWS_PA_MUTE: [Info]:MUTE both MACs because WLAN state is CRASH 
+8936,,enable_gipo_profiling:BT is ON, Turnoff BT to have this feature
  
-8905,,enable_gipo_profiling USE_COEX_WSI_DATA_EN set
+8937,,enable_gipo_profiling USE_COEX_WSI_DATA_EN set
  
-8906,,enable_gipo_profiling Disabled
+8938,,enable_gipo_profiling Disabled
  
-8907,I,enable_gipo_profiling PMM_GPIO_PWR_CSR:0x%x
+8939,I,enable_gipo_profiling PMM_GPIO_PWR_CSR:0x%x
  
-8908,,enable_gipo_profiling PMM_CX_PWRDN_REQ_MSK set
+8940,,enable_gipo_profiling PMM_CX_PWRDN_REQ_MSK set
  
-8909,,enable_gipo_profiling PMM_CX_SEND_XO_DISABLE set
+8941,,enable_gipo_profiling PMM_CX_SEND_XO_DISABLE set
  
-8910,,enable_gipo_profiling PMM_CX_DISABLE_PLL_MSK set
+8942,,enable_gipo_profiling PMM_CX_DISABLE_PLL_MSK set
  
-8911,,enable_gipo_profiling PMM_CX_DETECT_PLL_LOCK_MSK set
+8943,,enable_gipo_profiling PMM_CX_DETECT_PLL_LOCK_MSK set
  
-8912,,enable_gipo_profiling PMM_CX_ENABLE_PLL_MSK set
+8944,,enable_gipo_profiling PMM_CX_ENABLE_PLL_MSK set
  
-8913,,enable_gipo_profiling PMM_CX_SEND_XO_EN_MSK set
+8945,,enable_gipo_profiling PMM_CX_SEND_XO_EN_MSK set
  
-8914,,enable_gipo_profiling PMM_CX_GET_WAKEUP_INT_MSK set
+8946,,enable_gipo_profiling PMM_CX_GET_WAKEUP_INT_MSK set
  
-8915,I,enable_gipo_profiling PMM_WLAN%d_OFF_STS_MSK set
+8947,I,enable_gipo_profiling PMM_WLAN%d_OFF_STS_MSK set
  
-8916,I,enable_gipo_profiling PMM_WLAN%d_OFF_REQ_MSK set
+8948,I,enable_gipo_profiling PMM_WLAN%d_OFF_REQ_MSK set
  
-8917,I,enable_gipo_profiling PMM_WLAN%d_RX_BEACON_END_MSK set
+8949,I,enable_gipo_profiling PMM_WLAN%d_RX_BEACON_END_MSK set
  
-8918,I,enable_gipo_profiling PMM_WLAN%d_RX_BEACON_START_MSK set
+8950,I,enable_gipo_profiling PMM_WLAN%d_RX_BEACON_START_MSK set
  
-8919,I,enable_gipo_profiling PMM_WLAN%d_RRI_DONE_MSK set
+8951,I,enable_gipo_profiling PMM_WLAN%d_RRI_DONE_MSK set
  
-8920,I,enable_gipo_profiling PMM_WLAN%d_START_RRI_MSK set
+8952,I,enable_gipo_profiling PMM_WLAN%d_START_RRI_MSK set
  
-8921,I,enable_gipo_profiling PMM_WLAN%d_ENABLE_MSK set
+8953,I,enable_gipo_profiling PMM_WLAN%d_ENABLE_MSK set
  
-8922,I,enable_gipo_profiling PMM_WLAN1_GPIO_PWR_MSK:0x%x
+8954,I,enable_gipo_profiling PMM_WLAN1_GPIO_PWR_MSK:0x%x
  
-8923,I,enable_gipo_profiling PMM_WLAN2_GPIO_PWR_MSK:0x%x
+8955,I,enable_gipo_profiling PMM_WLAN2_GPIO_PWR_MSK:0x%x
  
-8924,I,twt_info unexpected: resp_req(%d)!=0 
-8925,I,twt_info unexpected: next_req(%d)!=0 
-8926,III,wal_cfcm_qsock_msg_ind : MONITOR(%d) CMD(%d) LEVEL(%d) 
-8927,,wal_cfcm_qsock_msg_ind : no action required 
-8928,I,wal_cfcm_qsock_reg : mointor(%d) 
-8929,,wal_cfcm_qsock_reg : Support for CPU monitor only. 
-8930,,wal_cfcm_fc_off : Support only CPU monitor 
-8931,IIIIIII,iniAg_RfConfig: chain %d PA mode %d bandChng %d bandwChng %d freqChng %d rfmodeChng %d fcstablefreqChng %d 
-8932,I,RF_LOAD_TX_BBF index =  %d , not supported 
+8956,I,twt_info unexpected: resp_req(%d)!=0 
+8957,I,twt_info unexpected: next_req(%d)!=0 
+8958,III,wal_cfcm_qsock_msg_ind : MONITOR(%d) CMD(%d) LEVEL(%d) 
+8959,,wal_cfcm_qsock_msg_ind : no action required 
+8960,I,wal_cfcm_qsock_reg : mointor(%d) 
+8961,,wal_cfcm_qsock_reg : Support for CPU monitor only. 
+8962,,wal_cfcm_fc_off : Support only CPU monitor 
+8963,IIIIIII,iniAg_RfConfig: chain %d PA mode %d bandChng %d bandwChng %d freqChng %d rfmodeChng %d fcstablefreqChng %d 
+8964,I,RF_LOAD_TX_BBF index =  %d , not supported 
  
-8933,III,RF_LOAD_TXFE_5G_CH1 index %d freqIdx %d fcsTable %d
+8965,III,RF_LOAD_TXFE_5G_CH1 index %d freqIdx %d fcsTable %d
  
-8934,I,RF_LOAD_TXFE_5G_CH1 index =  %d , not supported 
+8966,I,RF_LOAD_TXFE_5G_CH1 index =  %d , not supported 
  
-8935,IIII,RF_LOAD_TXFE_GTX_OVERRIDE band %d chain %d freqIdx %d fcsTable %d 
-8936,,data_unit returning NULL pointer 
-8937,II,revision index %d for rf_revision 0x%x 
-8938,III,Note: No table found for rev:0x%x instead using tables for rev:0x%x index:%d 
-8939,I,Error: no table found for rev:0x%x, using index:0 
-8940,II,device index %d for id 0x%x
+8967,IIII,RF_LOAD_TXFE_GTX_OVERRIDE band %d chain %d freqIdx %d fcsTable %d 
+8968,,data_unit returning NULL pointer 
+8969,II,revision index %d for rf_revision 0x%x 
+8970,III,Note: No table found for rev:0x%x instead using tables for rev:0x%x index:%d 
+8971,I,Error: no table found for rev:0x%x, using index:0 
+8972,II,device index %d for id 0x%x
  
-8941,I,ERROR: device ID %d not found in lookup list... analog master tables not set!!! 
-8942,I,loadSplitBbRfTable: invalid bbTable %d
+8973,I,ERROR: device ID %d not found in lookup list... analog master tables not set!!! 
+8974,I,loadSplitBbRfTable: invalid bbTable %d
  
-8943,I,loadSplitBbRfTable: invalid phy %d
+8975,I,loadSplitBbRfTable: invalid phy %d
  
-8944,I,loadSplitBbRfTable: invalid chain %d
+8976,I,loadSplitBbRfTable: invalid chain %d
  
-8945,IIIIIIII,loadSplitBbRfTable - bb:%d rf:%d phy:%d band:%d pa_mode:%d, chn:%d, col:%d, filt:%c 
-8946,,loadSplitBbRfTable: No addr rfTable given.
+8977,IIIIIIII,loadSplitBbRfTable - bb:%d rf:%d phy:%d band:%d pa_mode:%d, chn:%d, col:%d, filt:%c 
+8978,,loadSplitBbRfTable: No addr rfTable given.
  
-8947,,Error: iniAg_masterJoined_tables is null... iniAg not init correctly 
-8948,,Error: iniAg_masterJoined_tables_rxgain is null... iniAg not init correctly
+8979,,Error: iniAg_masterJoined_tables is null... iniAg not init correctly 
+8980,,Error: iniAg_masterJoined_tables_rxgain is null... iniAg not init correctly
  
-8949,I,loadSplitBbRfTable: invalid rfTable index %d
+8981,I,loadSplitBbRfTable: invalid rfTable index %d
  
-8950,,bb has address, rf has data 
-8951,,bb has data, rf has address 
-8952,,Error: conflict merging BB and RF tables.  
-8953,III,rows in table's addr %d less than rows in data %d. table index %d 
-8954,,Error: row number issue in merging BB and RF tables, skip table index 
-8955,I,Warning: Leftover tables while joining! All remainders skipped after index %d 
-8956,IIII,loadDFStable - table: %d, phy: %d, column: %d, filt: %c
+8982,,bb has address, rf has data 
+8983,,bb has data, rf has address 
+8984,,Error: conflict merging BB and RF tables.  
+8985,III,rows in table's addr %d less than rows in data %d. table index %d 
+8986,,Error: row number issue in merging BB and RF tables, skip table index 
+8987,I,Warning: Leftover tables while joining! All remainders skipped after index %d 
+8988,IIII,loadDFStable - table: %d, phy: %d, column: %d, filt: %c
  
-8957,I,loadDFStable: invalid table %d
+8989,I,loadDFStable: invalid table %d
  
-8958,I,loadDFStable: invalid phy %d
+8990,I,loadDFStable: invalid phy %d
  
-8959,IIII,loadBBtable - table: %d, phy: %d, column: %d, filt: %c 
-8960,I,loadBBtable: invalid table %d
+8991,IIII,loadBBtable - table: %d, phy: %d, column: %d, filt: %c 
+8992,I,loadBBtable: invalid table %d
  
-8961,I,loadBBtable: invalid phy %d
+8993,I,loadBBtable: invalid phy %d
  
-8962,IIIII,loadRFtable - pa_mode: %d, table: %d, chain: %d, column: %d, filt: %c 
-8963,I,loadRFtable: invalid table index %d
+8994,IIIII,loadRFtable - pa_mode: %d, table: %d, chain: %d, column: %d, filt: %c 
+8995,I,loadRFtable: invalid table index %d
  
-8964,I,loadRFtable: invalid chain %d
+8996,I,loadRFtable: invalid chain %d
  
-8965,,Error: iniAg_masterJoined_simple_tables is null... iniAg not init correctly 
-8966,,Error: iniAg_masterJoined_tables is null... iniAg not init correctly 
-8967,,Error: cannot commit NULL table!
+8997,,Error: iniAg_masterJoined_simple_tables is null... iniAg not init correctly 
+8998,,Error: iniAg_masterJoined_tables is null... iniAg not init correctly 
+8999,,Error: cannot commit NULL table!
  
-8968,II,Note: table filtered out. table[%d].filter = %c 
-8969,I,halphy_iniAg_LoadExtraRFtable index = %d  
+9000,II,Note: table filtered out. table[%d].filter = %c 
+9001,I,halphy_iniAg_LoadExtraRFtable index = %d  
+9002,I,wls_fw thread exists with %d! 
+9004,I,wls_locsvr thread exists with %d! 
+9006,I,wls_wlansvr thread exists with %d! 
+9008,,wls_clear_clntl, clear clients after unregister qmi 
+9010,II,wls_send_indication: msg_id %d, len %d 
+9012,,location client is not connected yet 
+9014,,qmi csi connection is Busy 
+9016,I,__wls_send_indication() returns %d 
+9018,,indication is NULL or has length 0 
+9020,,info: no location client is connected yet 
+9022,,no location client is connected yet 
+9024,,null parameter 
+9026,I,qmi_csi_register_with_options failed %d 
+9028,,WLS Location Server thread started! 
+9030,,wlan not ready to serve, exit loc_svc! 
+9032,I,wlan host ready to serve - %d 
+9034,,starting wlan fw intf 
+9036,,wlan not ready to serve, exit loc_svc! 
+9038,,wlan fw is ready to serve 
+9040,,starting location service... 
+9042,,location service started 
+9044,,waiting for locatoin request! 
+9046,I,sig_val = %x 
+9048,,WLS_WLIF_RX_SIG! 
+9050,I,wlan not ready to serve, stop location service! - %d 
+9052,I,qmi_csi_unregister() returns error %d 
+9054,,return 
+9056,,break 
+9058,,event handled! 
+9060,I,qmi_csi_send_ind returns error %d 
+9062,,connected to location client! 
+9064,I,loc disconnected! clnt_num = %d 
+9066,,null parameters 
+9068,I,LOC_SVR_RECV msg id = %d! 
+9070,I,no function defined to handle request for message ID: %d 
+9072,I,message id: %d greater than maximum known message ID.
+ 
+9074,,version query received 
+9076,,empty version request 
+9078,,version info unavailable 
+9080,I,qmi_csi_send_resp transmission fails %d! 
+9082,,empty status request 
+9084,I,status req received %d! 
+9086,I,qmi_csi_send_resp transmission fails %d! 
+9088,I,status resp sent %d! 
+9090,I,intf_type %d don't send status! 
+9092,,malloc fails for rtt_oem_channel_list! 
+9094,I,wls_send_indication transmission fails %d! 
+9096,I,status indication sent %d! 
+9098,,discovery scan query received 
+9100,,empty discovery request 
+9102,IIIIIIII,scan id: %d, active: %d, dwell %d timeout %d freq_list_len: %d scan_type: %d dwell_mode: %d, radio_chain_pref: %d 
+9104,,Freq_list_length greater than max_size of freq_list 
+9106,II,freq_list[%d]: %d 
+9108,I,qmi_csi_send_resp transmission fails %d! 
+9110,I,wls_fuse_req_id() fails %d 
+9112,I,wls_fw_issue_scan_cmd returns %d! 
+9114,,null pointer 
+9116,,clnt info lookup fails 
+9118,,subscription received 
+9120,,empty subscription request 
+9122,IIII,sub req_id %d sub enable %d sub type %d snoop mode %d 
+9124,II,invalid params: is_enable_valid %d sub_type_valid %d 
+9126,I,invalid sub type %d 
+9128,I,invalid intf type %d 
+9130,,invalid snoop_mode_valid 
+9132,IIIII,clnt_info: sub_intf_type %d subscription %d sub_snoop_scan_req_id %d sub_event_req_id %d snoop_mode %d 
+9134,I,qmi_csi_send_resp transmission fails %d! 
+9136,I,wls_fw_issue_rtt_req returns %d! 
+9138,I,qmi_csi_send_resp transmission fails %d! 
+9140,,null parameter 
+9142,I,qmi_csi_register_with_options failed %d 
+9144,,WLS APSS WLAN Server thread started! 
+9146,,waiting for signal! 
+9148,,close wlan service! 
+9150,,connected to wlan cnss-daemon! 
+9152,,disconnected! 
+9154,I,WLAN_SVR_RECV msg id = %d! 
+9156,I,No function defined to handle request for message ID: %d 
+9158,I,Message ID: %d greater than maximum known message ID.
+ 
+9160,,wlan version request recieved 
+9162,I,qmi_csi_send_resp returned error: %d 
+9164,,wlan status request recieved 
+9166,I,wls_save_status() returned error: %d 
+9168,I,qmi_csi_send_resp returned error: %d 
+9170,,wls_fetch_status returns NULL! 
+9172,,malloc fails for rtt_oem_channel_list! 
+9174,,wlan staus is ready 
+9176,,wlan status changed to NOT ready 
+9178,,rtt_oem_channel_list is NULL! 
+9180,,version struct pointer is null 
+9182,,saving version... 
+9184,I,chip id :        %d 
+9186,I,chip name :      %s 
+9188,I,chip from :      %s 
+9190,I,host version :   %s 
+9192,I,fw version :     %s 
+9194,,event struct pointer is NULL 
+9196,I,fw_adsp_support    : %d 
+9198,I,is_on              : %d 
+9200,I,vdev_id            : %d 
+9202,I,vdev_mode          : %d 
+9204,I,vdev_is_connected  : %d 
+9206,I,  ap: country_code : %s 
+9208,I,  ap: freq         : %d 
+9210,I,  ap: rssi         : %d 
+9212,I,  ap: ssid_len     : %d 
+9214,IIIIII,  ap: bssid        : %x %x %x %x %x %x 
+9216,I,channel_info_len   : %d 
+9218,I,rtt_info_len       : %d 
+9220,II,Error: # of channel %d beyond max limit %d 
+9222,II,channel_info[%d]    : %d 
+9224,II,channel_info[%d]   : %d 
+9226,II,Error: ssid length %d is beyond the limit 
+9228,,event struct pointer is null 
+9230,I,invalid vdev type %d 
+9232,,null pointers 
+9234,I,invalid intf type %d 
+9236,,Alloc RTT memory by using malloc 
+9238,II,find_scan_data(): req_id : %d, pending state: %d 
+9240,,scan data is null 
+9242,I,scan with req_id %d is not pending 
+9244,,info: scan buffer not null 
+9246,I,malloc(%d) failed 
+9248,II,scan buf of len %d allocated for req_id %d 
+9250,,scan data is null 
+9252,I,entry for req_id %d not free 
+9254,,scan data is null 
+9256,II,req_id %d len %d 
+9258,,scan data is null 
+9260,I,loc scan result entry length %d 
+9262,,scan_data_dump(): null pointer 
+9264,I,data.req_id %d 
+9266,I,data.pending %d 
+9268,I,data.head %p 
+9270,I,data.max_len %d 
+9272,I,data.len %d 
+9274,I,data.cur_pos %p 
+9276,I,data.len_chre %d 
+9278,I,data.cur_pos_chre %p 
+9280,I,data.len_chain %d 
+9282,I,data.cur_pos_chain %p 
+9284,,rtt_req_blob_valid == 0 
+9286,,Invalid buf->rtt_req_blob_len 
+9288,,malloc failed 
+9290,I,wmi_unified_cmd_send returns %d 
+9292,I,wls_fw_issue_rtt_req: submitted successfully %d 
+9294,,malloc failed 
+9296,I,wmi_unified_cmd_send returns %d 
+9298,II,snoop subscription: enable %d snoop_mode %x submitted successfully 
+9300,I,wls_fw_issue_scan_cmd(): scan req_id : %d 
+9302,I,another scan with req_id %d is being serviced! 
+9304,I,invalid req_id : %d 
+9306,I,invalid freq_list_len : %d 
+9308,I,invalid ssid_list_len : %d 
+9310,I,invalid scan time out : %d 
+9312,I,scan data entry not found for req_id %d 
+9314,I,req_id is already pending: %d 
+9316,IIII,req_id %d time_out %d too short for dwell_time %d ms and freq_list_len %d 
+9318,III,req_id %d radio_pref %d (> %d) -> use default 
+9320,I,malloc(scan_cmd) failed, size %d 
+9322,I,create_scan_cmd() failed %d 
+9324,I,scan_data_init() failed %d 
+9326,I,wmi_unified_cmd_send() failed %d 
+9328,I,data entry not found for req_id %d 
+9330,I,wls_fw_scan_complete_handler(): req_id %d is not pending 
+9332,I,info: scan data buffer for req_id %d is null. empty scan result? 
+9334,I,scan_data_alloc_buffer() returns error %d 
+9336,I,ap array data size %d 
+9338,I,sending scan data size %d 
+9340,I,req_id %d 
+9342,I,ap_array_len %d 
+9344,I,ap_array_chre_len %d 
+9346,I,ap_array_chain_len %d 
+9348,I,extscan_is_completed %d 
+9350,I,scan_type_performed %d 
+9352,I,radio_chain_pref %d 
+9354,III,wls_fw_scan_complete_handler, scan_is_truly_complete %d, scan_type_performed %d, radio_chain_pref %d 
+9356,I,__wls_fw_scan_result_handler(): scan req id %d 
+9358,II,parse_scan_result() returns error %d on req_id %d 
+9360,I,wls_fw_scan_complete_handler() returns %d 
+9362,II,wls_fw_scan_result_handler(): rx_scan_data_pkt_num %d rx_data_pkt_len %d 
+9364,I,__wls_fw_scan_result_handler() returns %d 
+9366,I,handoff vdev_id  %d 
+9368,IIIIII,handoff bssid    %x %x %x %x %x %x 
+9370,I,handoff ssid len %d 
+9372,I,handoff ssid     %s 
+9374,I,handoff freq     %d 
+9376,I,handoff rssi     %d 
+9378,,wls_fw_handoff_handler(): entered 
+9380,,null handoff event 
+9382,I,invalid vdev_id %d 
+9384,I,invalid ssid_len %d 
+9386,,null status pointer 
+9388,,malloc fails for rtt_oem_channel_list! 
+9390,I,wls_fw_status_handler(): data len %d 
+9392,II,wls_fw_status_handler(): scan completed on req_id %d and extscan_is_completed %d 
+9394,I,wls_fw_status_handler(): fw scan timeout on req_id %d 
+9396,I,wls_fw_status_handler(): medium busy on req_id %d 
+9398,I,wls_fw_status_handler(): scan dropped or aborted on req_id %d 
+9400,I,wls_fw_status_handler(): fw detected illegal scan params on req_id %d 
+9402,II,wls_fw_status_handler(): invalid scan status %d on req_id %d 
+9404,I,wls_fw_rtt_resp_handler() %d 
+9406,,wls_fw_init entered 
+9408,,wmi_save_rx_data(): inform loc server thread of fw intf readiness 
+9410,,wls_fw_reinit entered 
+9412,,WLS FW thread started! 
+9414,,close fw interface! 
+9416,,waiting for fw signal! 
+9418,I,signal received! signal value = %d 
+9420,,close fw interface! 
+9422,I,scan timeout detected from adsp on req_id %d! 
+9424,,received fw rx signal! 
+9426,,invalid param 
+9428,,invalid vdev_id 
+9430,II,create_scan_cmd() radio_pref %d, scan_ctrl_flags_ext %d 
+9432,I,invalid ssid len %d 
+9434,I,latest req id %d 
+9436,I,validata_scan_result returns error %d 
+9438,,null pointer 
+9440,I,scanned result data TLV 0x%x 
+9442,I,parsing scan result packet (with header) of %d bytes 
+9444,I,  scan result data length %d bytes 
+9446,II,scan_data_alloc_buffer() returns error %d on req_id %d 
+9448,II,parse_scanned_chan() returns error %d on req_id %d 
+9450,I,ap_data length %d 
+9452,II,parsing scan entry #%d from 0x%x 
+9454,I,data_len_raw %d 
+9456,III,data_len_raw %d bssid 0x%x:0x%x 
+9458,I,data_len_raw %d 
+9460,II,data_len_raw %d is_probe %d 
+9462,I,data_len_raw %d 
+9464,I,ssid_len %d 
+9466,I,ssid %s 
+9468,I,data_len_raw %d 
+9470,II,ssid_len %d > %d  
+9472,I,data_len_raw %d 
+9474,II,data_len_raw %d rssi %d 
+9476,I,data_len_raw %d 
+9478,II,data_len_raw %d freq %d 
+9480,I,data_len_raw %d 
+9482,II,data_len_raw %d tx_power %d 
+9484,I,data_len_raw %d 
+9486,II,data_len_raw %d tx_rate %d 
+9488,I,data_len_raw %d 
+9490,II,data_len_raw %d mc_support %d 
+9492,I,data_len_raw %d 
+9494,II,data_len_raw %d tsf_timer_value_lower 0x%x 
+9496,I,data_len_raw %d 
+9498,II,data_len_raw %d tsf_timer_value_upper 0x%x 
+9500,I,data_len_raw %d 
+9502,II,data_len_raw %d age_of_measurement 0x%x 
+9504,I,data_len_raw %d 
+9506,II,data_len_raw %d connection_status %d 
+9508,I,data_len_raw %d 
+9510,I,msap_ie_len %d 
+9512,I,data_len_raw %d 
+9514,II,msap_ie_len %d > %d  
+9516,II,data_len_raw %d, msap_ie_len %d 
+9518,I,data_len_raw %d 
+9520,I,data_len_raw %d 
+9522,II,data_len_raw %d security_enabled %d 
+9524,I,data_len_raw %d 
+9526,II,data_len_raw %d device_type %d 
+9528,I,data_len_raw %d 
+9530,II,data_len_raw %d channel_is_passive %d 
+9532,I,data_len_raw %d 
+9534,II,data_len_raw %d dwell_time %d 
+9536,I,data_len_raw %d 
+9538,II,data_len_raw %d band_center_freq_1 %d 
+9540,I,data_len_raw %d 
+9542,II,data_len_raw %d band_center_freq_2 %d 
+9544,I,data_len_raw %d 
+9546,II,data_len_raw %d phy_mode %d 
+9548,I,data_len_raw %d 
+9550,II,data_len_raw %d scan_mod_id%d 
+9552,I,data_len_raw %d 
+9554,II,data_len_raw %d scan_id%d 
+9556,I,data_len_raw %d 
+9558,II,data_len_raw %d flags%d 
+9560,I,data_len_raw %d 
+9562,II,data_len_raw %d scan_cache%d 
+9564,I,data_len_raw %d 
+9566,II,data_len_raw %d report_context_hub%d 
+9568,I,data_len_raw %d 
+9570,II,data_len_raw %d ess%d 
+9572,I,data_len_raw %d 
+9574,II,data_len_raw %d sec_mode%d 
+9576,I,data_len_raw %d 
+9578,II,data_len_raw %d tx_nss%d 
+9580,I,data_len_raw %d 
+9582,II,data_len_raw %d tx_mcs%d 
+9584,I,data_len_raw %d 
+9586,II,data_len_raw %d rx_nss%d 
+9588,I,data_len_raw %d 
+9590,II,data_len_raw %d rx_mcs%d 
+9592,I,data_len_raw %d 
+9594,II,data_len_raw %d radio_chain_mask %d 
+9596,I,data_len_raw %d 
+9598,II,data_len_raw %d rssi_chain_0 %d 
+9600,I,data_len_raw %d 
+9602,II,data_len_raw %d rssi_chain_1 %d 
+9604,I,scan_data_append() returns error %d 
+9606,I,scan_data_buf full (%d APs) 
+9608,I,  scan result entry num %d 
+9610,II,%d APs beyond fullness threshold %d 
+9612,I,partial ap data found! remain data length %d 
+9614,,null scan result pointer! 
+9616,II,empty scan result msg len %d scan_result->data_len %d 
+9618,II,scan result's tlv corrupted expected %d tlv.len %d 
+9620,II,corrupted scan result msg! len %d payload_len %d 
+9622,I,corrupted scan result msg! ie_bitmap 0x%x 
+9624,,null data pointer 
+9626,I,invalid req_id %d 
+9628,I,num of channel scanned %d 
+9630,I,parse_scanned_chan(): invalid chan_num %d 
+9632,III,data[%d] / freq[%d] %d 
+9634,I,freq_list_len %d 
+9636,I,timer_def_osal() returns error %d 
+9638,I,wlif_tx failed %d 
+9640,I,event handler already registered %d 
+9642,I,no more event handlers %d 
+9644,I,wmi_unified_register_event_handler(): handler idx %d registered 
+9646,I,event handler is not registered: event id %d 
+9648,,wmi_process_rx_data() entered 
+9650,I,__wmi_dequeue_rx_data() processed %d wmi msgs in total in current round 
+9652,I,wmi_process_rx_data(): cmd/event id = 0x%x 
+9654,I,wmi_process_rx_data(): raw packet len = %d 
+9656,I,idx %d 
+9658,I,event handler is not registered: event id %d 
+9660,I,event handler is null: event idx %d 
+9662,,wmi_tx_done_handler(): called 
+9664,I,wmi_save_rx_data(): RX dump start, size = %d 
+9666,,wmi_save_rx_data(): RX dump done 
+9668,,wmi_save_rx_data(): inform fw thread of scan result arrival 
+9670,,wmi_save_rx_data(): RX signal sent 
