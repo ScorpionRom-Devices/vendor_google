@@ -61,16 +61,6 @@
         <component class=".RegulatoryInfoDisplayActivity" enabled="true" />
     </component-override>
 
-    <!-- Stub for Fi to request bug reports, disabled until a Fi SIM is added.
-         Included for all in-market devices receiving the R OTA as well as
-         devices launching with R. -->
-    <disabled-until-used-preinstalled-carrier-associated-app
-        package="com.google.android.apps.nova.bugreportwrapper"
-        carrierAppPackage="com.google.android.apps.tycho"
-        addedInSdk="30" />
-    <!-- Allow access to BugreportManager. -->
-    <bugreport-whitelisted package="com.google.android.apps.nova.bugreportwrapper" />
-
     <!-- Feature flag on RVC builds for AER requirements, b/159247801 -->
     <feature name="com.google.android.feature.AER_OPTIMIZED" />
 
